@@ -52,7 +52,7 @@ Compared to stroke files, Hershey Fonts are many times more compact, but also ha
 If you're only interested in utilizing pre-generated single-line fonts, you can grab them at the following places:
 
 - Hershey fonts can be found in [dist/hershey](dist/hershey) folder.
-- Stroke files (JSON containing polyline coordinates) can be found in [dist/hershey](dist/json) folder.
+- Stroke files (JSON containing polyline coordinates) can be found in [dist/json](dist/json) folder.
 
 
 ### Generating Stroke Files
