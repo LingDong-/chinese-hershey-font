@@ -1,0 +1,99 @@
+<!DOCTYPE html>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/LingDong-/p5-hershey-js@c01aec34849206262106d77e9cf2404695ced060/p5.hershey.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/LingDong-/p5-hershey-js@c01aec34849206262106d77e9cf2404695ced060/p5.hershey.data.js"></script>
+<script>
+
+var teststrings = []
+
+var filenames = [
+  "dist/hershey/Heiti.hf.txt",
+  "dist/hershey/Heiti-small.hf.txt",
+  "dist/hershey/Kaiti.hf.txt",
+]
+var files = [];
+var fonts = [];
+
+function parseHershey(txt){
+  return P5.hershey.parseFontString(txt);
+}
+
+function preload(){
+  for (var i = 0; i < filenames.length; i++){
+    files[i] = loadStrings(filenames[i]);
+  }
+  teststrings = loadStrings("teststrings.txt")
+}
+
+function setup() {
+  createCanvas(window.innerWidth, 800);
+  for (var i = 0; i < files.length; i++){
+    fonts[i] = parseHershey(files[i].join("\n"));
+    document.getElementById("select0").innerHTML += "<option>"+filenames[i]+"</option>"
+  }
+  for (var i = 0; i < teststrings.length; i++){
+    document.getElementById("select1").innerHTML += "<option>"+teststrings[i].slice(0,10)+"...</option>"
+  }
+  document.getElementById("select0").oninput=render
+  document.getElementById("select1").oninput=render
+  document.getElementById("slider0").oninput=render
+  document.getElementById("slider1").oninput=render
+  document.getElementById("slider2").oninput=render
+  render()
+
+}
+function draw(){
+
+}
+
+function render() {
+  background(255);
+
+  var font = fonts[document.getElementById("select0").selectedIndex]
+  var s = document.getElementById("slider0").value/100
+  var marg = 50
+  var txt = teststrings[document.getElementById("select1").selectedIndex];
+  var w = P5.hershey.estimateTextWidth("一",{font:font,cmap:(x)=>(x)})
+  var cpl = floor((width-marg*2)/s/w)
+  var ns = document.getElementById("slider2").value/100
+
+  push();
+  scale(s);
+  noFill();
+  stroke(0);
+  strokeJoin(ROUND);
+  strokeWeight(document.getElementById("slider1").value/100/s);
+  translate(marg,w*0.5+marg);
+
+  for (var j = 0; j < txt.length; j+=cpl){
+        
+    P5.hershey.putText(txt.slice(j,j+cpl),{
+      font:font,
+      cmap:(x)=>(x),
+      noise:{x:(x,y)=>(map(noise(x*0.1,y*0.1,frameCount+j),0,1,-ns,ns)),
+             y:(x,y)=>(map(noise(frameCount+j,x*0.1,y*0.1),0,1,-ns,ns))}
+    })
+    translate(0,w*1.2);
+  }
+  pop();
+
+  
+}
+
+</script>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+
+  <body style="text-align:center; font-family:sans-serif;">
+    <h1>chinese-hershey-font</h1>
+    <div>
+      Font=<select id="select0"></select>&nbsp;&nbsp;
+      Text=<select id="select1"></select>&nbsp;&nbsp;
+      Size=<input id="slider0" type="range" min="20" max="200" value="100">&nbsp;&nbsp;
+      Thickness=<input id="slider1" type="range" min="50" max="600" value="200">&nbsp;&nbsp;
+      Noise=<input id="slider2" type="range" min="0" max="2000" value="0">
+    </div>
+  </body>
+</html>
