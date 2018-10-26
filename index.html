@@ -10,9 +10,11 @@ var filenames = [
   "dist/hershey/Heiti.hf.txt",
   "dist/hershey/Heiti-small.hf.txt",
   "dist/hershey/Kaiti.hf.txt",
+  "dist/hershey/Mingti-basic.hf.txt",
 ]
 var files = [];
 var fonts = [];
+var renderCnt = 0;
 
 function parseHershey(txt){
   return P5.hershey.parseFontString(txt);
@@ -38,12 +40,20 @@ function setup() {
   document.getElementById("select1").oninput=render
   document.getElementById("slider0").oninput=render
   document.getElementById("slider1").oninput=render
-  document.getElementById("slider2").oninput=render
+  document.getElementById("slider2").oninput=function(){
+    renderCnt = 1/0;
+  }
   render()
 
 }
 function draw(){
-
+  if (renderCnt > 0){
+    render();
+    renderCnt -= 1;
+    if (document.getElementById("slider2").value == 0){
+      renderCnt = 0;
+    }
+  }
 }
 
 function render() {
@@ -70,8 +80,8 @@ function render() {
     P5.hershey.putText(txt.slice(j,j+cpl),{
       font:font,
       cmap:(x)=>(x),
-      noise:{x:(x,y)=>(map(noise(x*0.1,y*0.1,frameCount+j),0,1,-ns,ns)),
-             y:(x,y)=>(map(noise(frameCount+j,x*0.1,y*0.1),0,1,-ns,ns))}
+      noise:{x:(x,y)=>(map(noise(x*0.1,y*0.1,frameCount*0.1+j),0,1,-ns,ns)),
+             y:(x,y)=>(map(noise(frameCount*0.1+j,x*0.1,y*0.1),0,1,-ns,ns))}
     })
     translate(0,w*1.2);
   }

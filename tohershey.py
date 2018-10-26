@@ -5,6 +5,10 @@ import sys
 CH0 = 0x4e00 # unicode <CJK Ideograph, First>
 CH1 = 0x9fef # unicode <CJK Ideograph, Last>
 
+# Extension A-E
+# CH0 = 131072
+# CH1 = 183969
+
 if __name__ == "__main__":
 
     data = json.loads(open(sys.argv[1],"r").read())

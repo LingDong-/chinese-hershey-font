@@ -3,7 +3,7 @@
 *Convert Chinese Characters to Single-Line Fonts using Computer Vision*
 
 - **Check out the [Live demo](https://lingdong-.github.io/chinese-hershey-font/)!**
-- **Download the hershey font: [Heiti.hf.txt](dist/hershey/Heiti.hf.txt) (20975 unicode characters)**
+- **Download the hershey font: [Heiti.hf.txt](dist/hershey/Heiti.hf.txt) (20975 unicode characters), [Mingti.hf.txt](dist/hershey/Mingti.hf.txt) (73874 unicode characters)**
 
 
 Single-line fonts such as [the Hershey fonts](https://en.wikipedia.org/wiki/Hershey_fonts) are massively useful for making cool procedural graphics and for engraving. They're also arguably easier to learn for neural nets.
@@ -52,6 +52,11 @@ Compared to stroke files, Hershey Fonts are many times more compact, but also ha
 If you're only interested in utilizing pre-generated single-line fonts, you can grab them at the following places:
 
 - Hershey fonts can be found in [dist/hershey](dist/hershey) folder.
+  - [Heiti.hf.txt](dist/hershey/Heiti.hf.txt): **20975** characters, based on macOS system font `STHeiti Light`. This includes all unicode basic CJK Ideographs.
+  - [Kaiti.hf.txt](dist/hershey/Kaiti.hf.txt): **20975** characters, based on macOS system font `STKaiti`.
+  - [Mingti.hf.txt](dist/hershey/Mingti.hf.txt): **73874** characters, based on [花園明朝體(Hanazono)](https://zh.wikipedia.org/wiki/花園字體). This includes all unicode basic CJK Ideographs, as well as CJK Ideographs Extension A - E.
+  - [Heiti-small.hf.txt](dist/hershey/Heiti-small.hf.txt). **20975** characters, similar to Heiti.hf.txt, but has smaller font size and spacing.
+  - [Mingti-basic.hf.txt](dist/hershey/Mingti-basic.hf.txt) **27631** characters, a subset of Mingti.tf.txt, containing the basic CJK Ideographs and Extension A.
 - Stroke files (JSON containing polyline coordinates) can be found in [dist/json](dist/json) folder.
 
 
