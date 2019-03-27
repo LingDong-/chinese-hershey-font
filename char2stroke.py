@@ -51,7 +51,7 @@ def rastBox(l,w=100,h=100,f="Heiti.ttc"):
     font = ImageFont.truetype(f,h)
     im0 = Image.new("L",(int(w*1.5),int(h*1.5)))
     dr0 = ImageDraw.Draw(im0)
-    dr0.text((int(w*0.1), int(h*0.1)-15),l,255,font=font)
+    dr0.text((int(w*0.1), int(h*0.1)),l,255,font=font)
 
     xmin,ymin,xmax,ymax = getbound(im0)
     xmin = min(xmin,int(w*0.25))
