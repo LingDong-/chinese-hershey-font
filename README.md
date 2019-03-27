@@ -52,12 +52,16 @@ Compared to stroke files, Hershey Fonts are many times more compact, but also ha
 If you're only interested in utilizing pre-generated single-line fonts, you can grab them at the following places:
 
 - Hershey fonts can be found in [dist/hershey](dist/hershey) folder.
-  - [Heiti.hf.txt](dist/hershey/Heiti.hf.txt): **20975** characters, based on macOS system font `STHeiti Light`. This includes all unicode basic CJK Ideographs.
-  - [Kaiti.hf.txt](dist/hershey/Kaiti.hf.txt): **20975** characters, based on macOS system font `STKaiti`.
+  - [Heiti.hf.txt](dist/hershey/Heiti.hf.txt): **20975** characters, based on [思源黑體(Souce Han Sans)](https://github.com/adobe-fonts/source-han-sans). This includes all unicode basic CJK Ideographs.
+  - [Kaiti.hf.txt](dist/hershey/Kaiti.hf.txt): **20975** characters, based on [全字庫正楷體(TW-Kai)](https://data.gov.tw/dataset/5961).
   - [Mingti.hf.txt](dist/hershey/Mingti.hf.txt): **73874** characters, based on [花園明朝體(Hanazono)](https://zh.wikipedia.org/wiki/花園字體). This includes all unicode basic CJK Ideographs, as well as CJK Ideographs Extension A - E.
   - [Heiti-small.hf.txt](dist/hershey/Heiti-small.hf.txt). **20975** characters, similar to Heiti.hf.txt, but has smaller font size and spacing.
   - [Mingti-basic.hf.txt](dist/hershey/Mingti-basic.hf.txt) **27631** characters, a subset of Mingti.tf.txt, containing the basic CJK Ideographs and Extension A.
 - Stroke files (JSON containing polyline coordinates) can be found in [dist/json](dist/json) folder.
+
+**Note:**
+
+`Heiti.hf.txt` and `Kaiti.hf.txt` were originally based on proprietary macOS system fonts `STHeiti` and `STKaiti`. They're now replaced with open source alternatives.
 
 
 ### Generating Stroke Files

@@ -51,7 +51,7 @@ def rastBox(l,w=100,h=100,f="Heiti.ttc"):
     font = ImageFont.truetype(f,h)
     im0 = Image.new("L",(int(w*1.5),int(h*1.5)))
     dr0 = ImageDraw.Draw(im0)
-    dr0.text((int(w*0.1), int(h*0.1)),l,255,font=font)
+    dr0.text((int(w*0.1), int(h*0.1)-15),l,255,font=font)
 
     xmin,ymin,xmax,ymax = getbound(im0)
     xmin = min(xmin,int(w*0.25))
@@ -292,7 +292,7 @@ def test(fonts = ["/System/Library/Fonts/STHeiti Light.ttc"]):
         "teststrings.txt",'r').readlines()[-1].decode('utf-8')
     IM = Image.new("RGB",(w*test_params.nsample,h*len(fonts)))
     DR = ImageDraw.Draw(IM)
-    randidx = random.randrange(0,len(corpus)//test_params.nsample)
+    randidx = random.randrange(0,len(corpus)//test_params.nsample+1)
     for i in range(0,test_params.nsample):
         ch = corpus[(randidx*test_params.nsample+i)%len(corpus)]
         print ch,

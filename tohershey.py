@@ -13,8 +13,8 @@ if __name__ == "__main__":
 
     data = json.loads(open(sys.argv[1],"r").read())
 
-    w = 48
-    k = 16
+    w = 32
+    k = 0
     for i in range(CH0,CH1+1):
         idx = "U+"+hex(i)[2:].upper()
         if idx not in data:
