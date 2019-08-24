@@ -288,7 +288,7 @@ class test_params:
 # and show result as image
 def test(fonts = ["/System/Library/Fonts/STHeiti Light.ttc"]):
     w,h = test_params.width, test_params.height
-    corpus = test_params.corpus if len(test_params.corpus) else open(
+    corpus = test_params.corpus.decode('utf-8') if len(test_params.corpus) else open(
         "teststrings.txt",'r').readlines()[-1].decode('utf-8')
     IM = Image.new("RGB",(w*test_params.nsample,h*len(fonts)))
     DR = ImageDraw.Draw(IM)
